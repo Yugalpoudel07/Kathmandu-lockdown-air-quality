@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Resources folder git ignored
+resources/
+
 # Distribution / packaging
 .Python
 build/
@@ -218,3 +221,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project data: downloaded by src/download_data.py, not committed
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
