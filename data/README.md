@@ -56,3 +56,12 @@ Row counts exclude the header. The raw files are not committed to Git (see `.git
 - **Other negative PM2.5 values** (-1 to -15): Embassy 178 rows, Phora Durbar 46. Physically impossible; treated as invalid.
 - **Maximum PM2.5 = 985 µg/m³** in both files, which may be the instrument ceiling. Checked in notebook 01.
 - **Gaps.** Hours with no row at all (monitor offline) are not marked; counted per day in notebook 01.
+
+## Processed files (made by notebook 01, not committed)
+
+| File (`data/processed/`) | One row | Rows | Columns |
+|---|---|---|---|
+| `pm25_hourly_clean.csv` | one valid PM2.5 reading (station × hour) | 57,202 | `station`, `locationId`, `local_dt` (Nepal time), `date`, `pm25` (µg/m³), `is_suspect` (isolated spike or 985 ceiling; kept, flagged) |
+| `pm25_daily.csv` | one station × one Nepal calendar day, including days with no data | 2,944 (1,472 days × 2 stations) | `station`, `date`, `n_hours` (valid hourly readings, 0-24), `pm25_mean`, `pm25_median`, `pm25_mean_no_suspect` (µg/m³), `valid_day` (`n_hours >= 18`) |
+
+Notebook 02 uses `pm25_daily.csv`. The cleaning steps and row counts are in the main [README](../README.md#cleaning-decisions).
